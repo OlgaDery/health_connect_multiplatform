@@ -1,0 +1,39 @@
+CREATE TABLE ConsolidatedRecordEntity (
+id TEXT NOT NULL,
+bodyTemperature INTEGER NOT NULL DEFAULT -1,
+heartBeat INTEGER NOT NULL DEFAULT -1,
+time INTEGER NOT NULL DEFAULT -1,
+stepsMadeSinceLastRecord INTEGER NOT NULL DEFAULT -1,
+healthDataProvider INTEGER NOT NULL DEFAULT 0
+);
+
+insertConsolidatedRecordEntity:
+INSERT INTO ConsolidatedRecordEntity(id, bodyTemperature, heartBeat,
+time, stepsMadeSinceLastRecord, healthDataProvider)
+VALUES(?, ?, ?, ?, ?, ?);
+
+selectAllConsolidatedRecordEntities:
+SELECT * FROM ConsolidatedRecordEntity ORDER BY time DESC;
+
+selectMostRecentRecordFromHealthProvider:
+SELECT * FROM ConsolidatedRecordEntity WHERE healthDataProvider == 0 ORDER BY time DESC LIMIT 1;
+
+deleteAllHealthRecords:
+DELETE FROM ConsolidatedRecordEntity;
+
+CREATE TABLE LocationRecordEntity(
+id TEXT NOT NULL,
+longitude REAL NOT NULL,
+latitude REAL NOT NULL,
+timestamp INTEGER NOT NULL DEFAULT -1,
+idOfSource TEXT
+);
+
+insertCoordinates:
+INSERT INTO LocationRecordEntity(id, longitude, latitude, timestamp, idOfSource) VALUES (?, ?, ?, ?, ?);
+
+selectAllCoordinates:
+SELECT * FROM LocationRecordEntity ORDER BY timestamp DESC;
+
+deleteAllCoordinates:
+DELETE FROM LocationRecordEntity;
