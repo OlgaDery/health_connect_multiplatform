@@ -1,5 +1,5 @@
 # health_connect_multiplatform
-KMM/KMP sample app using coroutines, flow, viewmodel, SQLDelight as a local data storage), platform-specific location APIs and health data repositories. 
+KMM/KMP sample app using coroutines, flow, viewmodel, SQLDelight as a local data storage, platform-specific location APIs and health data repositories. 
 
 Business Requirements:
 - App runs on both Android and iOS platforms.
