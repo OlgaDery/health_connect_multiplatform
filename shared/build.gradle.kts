@@ -8,7 +8,7 @@ plugins {
     id ("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     id("com.google.devtools.ksp") version "1.9.20-Beta-1.0.13"
     kotlin("native.cocoapods")
-   // id("co.touchlab.skie") version "0.5.3"
+    id("co.touchlab.skie") version "0.5.2"
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
