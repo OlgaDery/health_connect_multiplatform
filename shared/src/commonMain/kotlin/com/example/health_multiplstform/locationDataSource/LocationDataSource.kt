@@ -13,4 +13,8 @@ class LocationDataSource(
     override fun unsubscribe() {
         locationServiceNativeClient.unsubscribeFromServices()
     }
+
+    override fun setCallbackProvider(provider: LocationCallbackProvider) {
+        locationServiceNativeClient.callbackProvider = provider
+    }
 }

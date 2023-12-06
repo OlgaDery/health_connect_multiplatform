@@ -25,7 +25,7 @@ class LocationCallbackManager(
             }
         }
 
-        locationDatasource.locationServiceNativeClient.updateCallbackProvider(callbackProviderImpl)
+        locationDatasource.setCallbackProvider(callbackProviderImpl)
         locationDatasource.subscribe()
 
         awaitClose {
@@ -48,6 +48,7 @@ interface ILocationDataSource {
     var locationServiceNativeClient: LocationServiceNativeClient
     fun subscribe()
     fun unsubscribe()
+    fun setCallbackProvider(provider: LocationCallbackProvider)
 }
 enum class LocationPermissionStatus {
     Given, Revoked, Undefined
