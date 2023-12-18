@@ -22,7 +22,7 @@ import platform.Foundation.localTimeZone
 import platform.HealthKit.HKHealthStore
 
 actual class DependencyManager constructor(locationNativeClient: CLLocationManager,
-                                           healthStore: HKHealthStore) { //: ObservableObject
+                                           healthStore: HKHealthStore)  {
     actual val appDataBase: AppDatabase
     actual val healthRecordsDatabase: HealthRecordsDatabaseProvider
     actual val locationRecordsDatabase: LocationRecordsDatabaseProvider

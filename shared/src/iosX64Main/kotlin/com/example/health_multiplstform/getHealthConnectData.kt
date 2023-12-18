@@ -11,6 +11,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import platform.Foundation.NSDate
 import platform.Foundation.NSDateComponents
+import platform.Foundation.dateWithTimeIntervalSince1970
 import platform.Foundation.timeIntervalSinceReferenceDate
 import platform.HealthKit.HKHealthStore
 import platform.HealthKit.HKQuantityType
@@ -33,12 +34,8 @@ actual suspend fun getHealthConnectStepsData(
 
 ): Int = suspendCancellableCoroutine { continuation ->
     if (healthConnectClient is HKHealthStore) {
-        val epochToIosTimeDiff = 978307200
-
-        val convertedStartTime = startTime.toDouble()/1000 - epochToIosTimeDiff
-        val convertedEndTime = endTime.toDouble()/1000 - epochToIosTimeDiff
-        val startDate = NSDate(timeIntervalSinceReferenceDate = convertedStartTime)
-        val endDate = NSDate(timeIntervalSinceReferenceDate = convertedEndTime)
+        val startDate = NSDate.dateWithTimeIntervalSince1970(startTime.toDouble()/1000)
+        val endDate = NSDate.dateWithTimeIntervalSince1970(endTime.toDouble()/1000)
 
         val dateComponents = NSDateComponents()
         dateComponents.hour = 0
@@ -69,7 +66,6 @@ actual suspend fun getHealthConnectStepsData(
                             statistics?.sumQuantity()?.doubleValueForUnit(unit = HKUnit.countUnit())
                                 ?.toInt()?.let {
                                     value += it
-                                    println("value updated: " + value)
                                 }
 
                         }

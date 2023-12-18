@@ -1,6 +1,11 @@
 # health_connect_multiplatform
 KMM/KMP sample app using coroutines, flow, viewmodel, SQLDelight as a local data storage, platform-specific location APIs and health data repositories. 
 
+# Disclaimer
+This is an experimental project developed to investigate KMP possibilities/limitations.
+Solutions for background functionality may be unstable in production if used not in conjunction with some platform-specific components.
+More information cam be found here - https://medium.com/@OlgaDery/kotlin-multiplatform-evaluation-part-2-how-to-design-background-functionality-42eb74416d87
+
 Business Requirements:
 - App runs on both Android and iOS platforms.
 - App reads desired health data from HealthKit on iOS and HealthConnect on Android (if available) every 3 minutes in the background and foreground.
